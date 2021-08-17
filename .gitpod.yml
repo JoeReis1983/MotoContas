@@ -3,4 +3,4 @@ ports:
     visibility: public
 tasks:
   - init: mysql < DDL.sql
-image: gitpod/workspace-mysqlex
+image: gitpod/workspace-mysql
