@@ -6,7 +6,7 @@ create user 'moto'@'localhost' identified by 'moto123';
 
 grant select, insert, delete, update on anotacao.* to moto@'localhost';
 
-create table moto_usuario (
+create table motoUsuario (
   usuario_id bigint unsigned not null auto_increment,
   usuario_nome varchar(50) not null,
   usuario_email varchar(50) not null,
