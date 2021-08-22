@@ -49,3 +49,4 @@ create table motoEmpresas(
   primary key (empresa_id),
   unique key uni_empresa_nome (empresa_nome)
 );
+show tables;
