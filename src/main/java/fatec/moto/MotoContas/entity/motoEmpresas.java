@@ -16,14 +16,12 @@ public class motoEmpresas{
   @Column(name = "empresa_id")
   private Long id;
 
-  @Column(name = "usuario_nome")
+  @Column(name = "empresa_nome")
   private String nome;
-  @Column(name = "usuario_nome")
+  @Column(name = "empresa_tipo")
   private String tipo;
-  @Column(name = "usuario_tipo")
-  private String retencao;
   @Column(name = "usuario_retencao")
-
+  private String retencao;
   
   public Long getId() {
     return id;

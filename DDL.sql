@@ -4,7 +4,7 @@ use motoBd;
 
 create user 'moto'@'localhost' identified by 'moto123';
 
-grant select, insert, delete, update on anotacao.* to moto@'localhost';
+grant select, insert, delete, update on motoBd.* to moto@'localhost';
 
 create table motoUsuario (
   usuario_id bigint unsigned not null auto_increment,

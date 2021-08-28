@@ -42,7 +42,7 @@ public class motoUsuario{
   private String pais;
 
   @ManyToMany (fetch = FetchType.LAZY)
-  @JoinTable (name = "motoUsuario_autorizacao", joinColumns = {@JoinColumn(name = "usuario_id")}, inverseJoinColumns = {@JoinColumn(name = "usuario_id")}) 
+  @JoinTable (name = "motoUsuario_autorizacao", joinColumns = {@JoinColumn(name = "usuario_id")}, inverseJoinColumns = {@JoinColumn(name = "aut_id")}) 
 
   private Set <motoAutorizacao> autorizacoes;
 

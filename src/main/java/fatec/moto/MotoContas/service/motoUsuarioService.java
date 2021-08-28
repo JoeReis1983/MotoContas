@@ -1,7 +1,5 @@
 package fatec.moto.MotoContas.service;
 
-
-
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ public class motoUsuarioService {
   private motoUsuarioRepository usuarioRepo;
   
   @Transactional
-  public motoUsuario cadastrarUsuario(String nome, String senha, String autorizacao){
+  public motoUsuario cadastrarUsuario(String nome, String senha, String autorizacao, String email, String cidade, String estado, String pais){
     motoAutorizacao aut = new motoAutorizacao();
 		aut.setNome(autorizacao);
 		autRepo.save(aut);	
@@ -29,8 +27,16 @@ public class motoUsuarioService {
 		motoUsuario usuario = new motoUsuario();
 		usuario.setNome(nome);
 		usuario.setSenha(senha);
-		usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
+
+    usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
 		usuario.getAutorizacoes().add(aut);
+
+
+    usuario.setEmail(email);
+    usuario.setCidade(cidade);
+    usuario.setEstado(estado);
+    usuario.setPais(pais);
+
 		usuarioRepo.save(usuario);
     return usuario;
   }
