@@ -1,11 +1,17 @@
 package fatec.moto.MotoContas.entity;
 
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +41,17 @@ public class motoUsuario{
   @Column (name = "usuario_pais")
   private String pais;
 
+  @ManyToMany (fetch = FetchType.LAZY)
+  @JoinTable (name = "motoUsuario_autorizacao", joinColumns = {@JoinColumn(name = "usuario_id")}, inverseJoinColumns = {@JoinColumn(name = "usuario_id")}) 
+
+  private Set <motoAutorizacao> autorizacoes;
+
+  public Set<motoAutorizacao> getAutorizacoes() {
+    return autorizacoes;
+  }
+  public void setAutorizacoes(Set<motoAutorizacao> autorizacoes) {
+    this.autorizacoes = autorizacoes;
+  }
   public Long getId() {
     return id;
   }

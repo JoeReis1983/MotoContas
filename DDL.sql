@@ -49,4 +49,16 @@ create table motoEmpresas(
   primary key (empresa_id),
   unique key uni_empresa_nome (empresa_nome)
 );
+
+create table motoAutorizacao (
+  aut_id bigint unsigned not null auto_increment,
+  aut_nome varchar(20) not null,
+  primary key (aut_id),
+  unique key uni_aut_nome (aut_nome)
+);
+
+
+
+
+
 show tables;
