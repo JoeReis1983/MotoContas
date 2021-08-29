@@ -26,11 +26,12 @@ class MotoContasApplicationTests {
 	@Autowired
 	private motoAutorizacaoRepository autRepo;
 
+
 	@Autowired
 	private motoUsuarioRepository usuarioRepo;
   
-	@Autowired
-	private motoUsuarioService usuarioService;
+	// @Autowired
+	// private motoUsuarioService usuarioService;
 	
 
 
@@ -38,33 +39,33 @@ class MotoContasApplicationTests {
 	// void contextLoads() {
 	// }
 	
-	@Test
-	void motoAutorizacaoRepositorySaveTestOk(){
-		motoAutorizacao aut = new motoAutorizacao();
-		aut.setNome("ROLE_TESTE");
-		autRepo.save(aut);
-		assertNotNull(aut.getId());		
-	}
-
 	// @Test
-	// void usuarioRepositorySaveTestOk(){
+	// void motoAutorizacaoRepositorySaveTestOk(){
 	// 	motoAutorizacao aut = new motoAutorizacao();
-	// 	aut.setNome("ROLE_TESTE1");
-	// 	autRepo.save(aut);	
-
-
-	// 	motoUsuario usuario = new motoUsuario();
-	// 	usuario.setNome("Celso Reis");
-	// 	usuario.setSenha("Moto1");
-	// 	usuario.setEmail("celso.reis@fatec.sp.gov.br");
-	// 	usuario.setCidade("São José dos Campos");
-	// 	usuario.setEstado("São Paulo");
-	// 	usuario.setPais("Brasil");
-	// 	usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
-	// 	usuario.getAutorizacoes().add(aut);
-	// 	usuarioRepo.save(usuario);
-	// 	assertNotNull(usuario.getId());		
+	// 	aut.setNome("ROLE_TESTE");
+	// 	autRepo.save(aut);
+	// 	assertNotNull(aut.getId());		
 	// }
+
+	@Test
+	void usuarioRepositorySaveTestOk(){
+		motoAutorizacao aut = new motoAutorizacao();
+		aut.setNome("ROLE_TESTE1");
+		autRepo.save(aut);	
+
+
+		motoUsuario usuario = new motoUsuario();
+		usuario.setNome("Celso Reis");
+		usuario.setSenha("Moto1");
+		usuario.setEmail("celso.reis@fatec.sp.gov.br");
+		usuario.setCidade("São José dos Campos");
+		usuario.setEstado("São Paulo");
+		usuario.setPais("Brasil");
+		usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
+		usuario.getAutorizacoes().add(aut);
+		usuarioRepo.save(usuario);
+		assertNotNull(usuario.getId());		
+	}
 	
 	
 

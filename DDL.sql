@@ -57,6 +57,13 @@ create table motoAutorizacao (
   unique key uni_aut_nome (aut_nome)
 );
 
+create table ligacao (
+  usuario_id bigint unsigned not null,
+  aut_id bigint unsigned not null,
+  primary key (usuario_id, aut_id),
+  foreign key aut_usuario_fk (usuario_id) references motoUsuario (usuario_id) on delete restrict on update cascade,
+  foreign key aut_autorizacao_fk (aut_id) references motoAutorizacao (aut_id) on delete restrict on update cascade
+);
 
 
 
