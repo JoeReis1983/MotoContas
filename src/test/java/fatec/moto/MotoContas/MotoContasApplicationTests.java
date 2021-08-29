@@ -3,6 +3,7 @@ package fatec.moto.MotoContas;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -14,6 +15,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import fatec.moto.MotoContas.entity.motoAutorizacao;
+import fatec.moto.MotoContas.entity.motoDespesas;
+import fatec.moto.MotoContas.entity.motoEmpresas;
+import fatec.moto.MotoContas.entity.motoRecebimentos;
 import fatec.moto.MotoContas.entity.motoUsuario;
 import fatec.moto.MotoContas.repository.motoAutorizacaoRepository;
 import fatec.moto.MotoContas.repository.motoUsuarioRepository;
@@ -24,14 +28,13 @@ import fatec.moto.MotoContas.service.motoUsuarioService;
 // @Rollback
 class MotoContasApplicationTests {
 	@Autowired
-	private motoAutorizacaoRepository autRepo;
-  
+	private motoAutorizacaoRepository autRepo;  
 
 	@Autowired
 	private motoUsuarioRepository usuarioRepo;
   
-	// @Autowired
-	// private motoUsuarioService usuarioService;
+	@Autowired
+	private motoUsuarioService usuarioService;
 	
 
 
@@ -51,14 +54,11 @@ class MotoContasApplicationTests {
 		System.out.println("ok");
 	} 
 
-
 	@Test
-	void cadastrarAutorizacao(){
+	void motoAutorizacaoRepositorySaveTestOk(){
 		motoAutorizacao aut = new motoAutorizacao();
 		aut.setNome("ROLE_TESTE1");
 		autRepo.save(aut);	
-
-
 		motoUsuario usuario = new motoUsuario();
 		usuario.setNome("Celso Reis");
 		usuario.setSenha("Moto1");
@@ -72,7 +72,12 @@ class MotoContasApplicationTests {
 		assertNotNull(usuario.getId());		
 	}
 	
-	
+	@Test
+	void motoUsuarioCadastrarUsuarioTestOk(){
+		motoUsuarioService.cadastrarUsuario("Vitor","moto1","ROLE_TESTE1","vitor@fatec.sp.gov.br","Jacarei","Sp","Brasil");
+		List<motoUsuario> usuarios = usuarioRepo.findMotoAutorizacaoByNome("ROLE_TESTE1");
+		assertFalse(usuarios.isEmpty());
+	}
 
 	@Test
 	void autorizacaoRepositoryFindByNome(){
@@ -82,6 +87,33 @@ class MotoContasApplicationTests {
 		assertNotNull(autRepo.findByNome("ROLE_TESTE2"));		
 	}
 
+	@Test
+	void cadastrarDespesas(){
+		motoDespesas desp = new motoDespesas();
+		desp.setNome("Gasolina");
+		desp.setTipo("Combustivel");
+		desp.setValor("72,18");
+		desp.setData(Date.valueOf("2021-08-29"));
+	}
+
+	@Test
+	void cadastrarEmpresas(){
+		motoEmpresas emp = new motoEmpresas();
+		emp.setNome("Ifood");
+		emp.setTipo("App");
+		emp.setRetencao("5");
+	}
+
+	@Test
+	void cadastrarRecebimentos(){
+		motoRecebimentos rec = new motoRecebimentos();
+		rec.setNome("Restaurante Prato Sujo");
+		rec.setTipo("App");
+		rec.setDistancia("12");
+		rec.setTempo("5");
+		rec.setData(Date.valueOf("2021-08-29"));
+		rec.setValor("6,00");
+	}	
 	// @Test
 	// void usuarioRepositorySaveTestOk(){
 	// 	Autorizacao aut = new Autorizacao();
