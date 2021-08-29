@@ -25,7 +25,7 @@ import fatec.moto.MotoContas.service.motoUsuarioService;
 class MotoContasApplicationTests {
 	@Autowired
 	private motoAutorizacaoRepository autRepo;
-
+  
 
 	@Autowired
 	private motoUsuarioRepository usuarioRepo;
@@ -46,9 +46,14 @@ class MotoContasApplicationTests {
 	// 	autRepo.save(aut);
 	// 	assertNotNull(aut.getId());		
 	// }
+	@Test
+	void testando(){
+		System.out.println("ok");
+	} 
+
 
 	@Test
-	void usuarioRepositorySaveTestOk(){
+	void cadastrarAutorizacao(){
 		motoAutorizacao aut = new motoAutorizacao();
 		aut.setNome("ROLE_TESTE1");
 		autRepo.save(aut);	
@@ -69,13 +74,13 @@ class MotoContasApplicationTests {
 	
 	
 
-	// @Test
-	// void autorizacaoRepositoryFindByNome(){
-	// 	Autorizacao aut = new Autorizacao();
-	// 	aut.setNome("ROLE_TESTE2");
-	// 	autRepo.save(aut);
-	// 	assertNotNull(autRepo.findByNome("ROLE_TESTE2"));		
-	// }
+	@Test
+	void autorizacaoRepositoryFindByNome(){
+		motoAutorizacao aut = new motoAutorizacao();
+		aut.setNome("ROLE_TESTE2");
+		autRepo.save(aut);
+		assertNotNull(autRepo.findByNome("ROLE_TESTE2"));		
+	}
 
 	// @Test
 	// void usuarioRepositorySaveTestOk(){

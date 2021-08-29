@@ -50,7 +50,7 @@ create table motoEmpresas(
   unique key uni_empresa_nome (empresa_nome)
 );
 
-create table motoAutorizacao (
+create table moto_autorizacao (
   aut_id bigint unsigned not null auto_increment,
   aut_nome varchar(20) not null,
   primary key (aut_id),
@@ -62,7 +62,7 @@ create table ligacao (
   aut_id bigint unsigned not null,
   primary key (usuario_id, aut_id),
   foreign key aut_usuario_fk (usuario_id) references motoUsuario (usuario_id) on delete restrict on update cascade,
-  foreign key aut_autorizacao_fk (aut_id) references motoAutorizacao (aut_id) on delete restrict on update cascade
+  foreign key aut_autorizacao_fk (aut_id) references moto_autorizacao (aut_id) on delete restrict on update cascade
 );
 
 
