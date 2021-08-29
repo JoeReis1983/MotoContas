@@ -20,7 +20,7 @@ public class motoEmpresas{
   private String nome;
   @Column(name = "empresa_tipo")
   private String tipo;
-  @Column(name = "usuario_retencao")
+  @Column(name = "empresa_retencao")
   private String retencao;
   
   public Long getId() {

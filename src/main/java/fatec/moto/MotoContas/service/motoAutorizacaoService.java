@@ -15,7 +15,7 @@ import fatec.moto.MotoContas.repository.motoAutorizacaoRepository;
 public class motoAutorizacaoService {
   @Autowired
   private motoAutorizacaoRepository autRepo;
-  @Autowired
+  // @Autowired
   private motoAutorizacao aut;
   
   @Transactional

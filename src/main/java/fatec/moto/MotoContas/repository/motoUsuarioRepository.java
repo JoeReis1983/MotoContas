@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fatec.moto.MotoContas.entity.motoUsuario;
 
-public interface motoUsuarioRepository extends JpaRepository<motoUsuario,String> {
+public interface motoUsuarioRepository extends JpaRepository<motoUsuario,Long> {
 
-  public List<motoUsuario> findByMotoAutorizacoesNome(String autorizacao);
+  public List<motoUsuario> findByNome(String nome);
   
 }

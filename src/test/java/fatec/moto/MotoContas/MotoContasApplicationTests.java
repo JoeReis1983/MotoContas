@@ -21,7 +21,7 @@ import fatec.moto.MotoContas.service.motoUsuarioService;
 
 @SpringBootTest
 @Transactional
-@Rollback
+// @Rollback
 class MotoContasApplicationTests {
 	@Autowired
 	private motoAutorizacaoRepository autRepo;
@@ -63,8 +63,8 @@ class MotoContasApplicationTests {
 		usuario.setNome("Celso Reis");
 		usuario.setSenha("Moto1");
 		usuario.setEmail("celso.reis@fatec.sp.gov.br");
-		usuario.setCidade("São José dos Campos");
-		usuario.setEstado("São Paulo");
+		usuario.setCidade("Sjc");
+		usuario.setEstado("Sp");
 		usuario.setPais("Brasil");
 		usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
 		usuario.getAutorizacoes().add(aut);
