@@ -6,7 +6,7 @@ create user 'moto'@'localhost' identified by 'moto123';
 
 grant select, insert, delete, update on motoBd.* to moto@'localhost';
 
-create table motoUsuario (
+create table moto_usuario (
   usuario_id bigint unsigned not null auto_increment,
   usuario_nome varchar(50) not null,
   usuario_email varchar(50) not null,
@@ -19,7 +19,7 @@ create table motoUsuario (
   unique key uni_usuario_id (usuario_id)
 );
 
-create table motoDespesas (
+create table moto_despesas (
   despesa_id bigint unsigned not null auto_increment,
   despesa_nome varchar(50) not null,
   despesa_tipo varchar(20) not null,
@@ -29,7 +29,7 @@ create table motoDespesas (
   unique key uni_despesa_id (despesa_id)
 );
 
-create table motoRecebimentos (
+create table moto_recebimentos (
   recebimento_id bigint unsigned not null auto_increment,
   recebimento_nome varchar(50) not null,
   recebimento_tipo varchar(20) not null,
@@ -41,7 +41,7 @@ create table motoRecebimentos (
   unique key uni_recebimento_id (recebimento_id)
 );
 
-create table motoEmpresas(
+create table moto_empresas(
   empresa_id bigint unsigned not null auto_increment,
   empresa_nome varchar(50) not null,
   empresa_tipo varchar(50) not null,
@@ -61,7 +61,7 @@ create table ligacao (
   usuario_id bigint unsigned not null,
   aut_id bigint unsigned not null,
   primary key (usuario_id, aut_id),
-  foreign key aut_usuario_fk (usuario_id) references motoUsuario (usuario_id) on delete restrict on update cascade,
+  foreign key aut_usuario_fk (usuario_id) references moto_usuario (usuario_id) on delete restrict on update cascade,
   foreign key aut_autorizacao_fk (aut_id) references moto_autorizacao (aut_id) on delete restrict on update cascade
 );
 
