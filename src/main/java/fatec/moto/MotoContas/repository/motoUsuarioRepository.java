@@ -8,6 +8,6 @@ import fatec.moto.MotoContas.entity.motoUsuario;
 
 public interface motoUsuarioRepository extends JpaRepository<motoUsuario,Long> {
 
-  public List<motoUsuario> findMotoAutorizacaoByNome(String nome);
+  public List<motoUsuario> findByNome(String nome);
   
 }

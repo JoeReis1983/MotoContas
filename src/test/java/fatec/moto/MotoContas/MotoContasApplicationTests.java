@@ -21,20 +21,21 @@ import fatec.moto.MotoContas.entity.motoRecebimentos;
 import fatec.moto.MotoContas.entity.motoUsuario;
 import fatec.moto.MotoContas.repository.motoAutorizacaoRepository;
 import fatec.moto.MotoContas.repository.motoUsuarioRepository;
+import fatec.moto.MotoContas.service.motoAutorizacaoService;
 import fatec.moto.MotoContas.service.motoUsuarioService;
 
 @SpringBootTest
 @Transactional
-// @Rollback
+@Rollback
 class MotoContasApplicationTests {
 	@Autowired
 	private motoAutorizacaoRepository autRepo;  
 
 	@Autowired
-	private motoUsuarioRepository usuarioRepo;
+	private motoUsuarioRepository motoUsuarioRepo;
   
 	@Autowired
-	private motoUsuarioService usuarioService;
+	private motoUsuarioService motoUsuarioService;
 	
 
 
@@ -68,14 +69,14 @@ class MotoContasApplicationTests {
 		usuario.setPais("Brasil");
 		usuario.setAutorizacoes(new HashSet<motoAutorizacao>());
 		usuario.getAutorizacoes().add(aut);
-		usuarioRepo.save(usuario);
+		motoUsuarioRepo.save(usuario);
 		assertNotNull(usuario.getId());		
 	}
 	
 	@Test
-	void motoUsuarioCadastrarUsuarioTestOk(){
-		motoUsuarioService.cadastrarUsuario("Vitor","moto1","ROLE_TESTE1","vitor@fatec.sp.gov.br","Jacarei","Sp","Brasil");
-		List<motoUsuario> usuarios = usuarioRepo.findMotoAutorizacaoByNome("ROLE_TESTE1");
+	void motoUsuarioCadastrarUsuarioTestOk(){	
+		motoUsuarioService.cadastrarUsuario("Vitor","moto1","Tipo_1","vitor@fatec.sp.gov.br","Jacarei","Sp","Brasil");
+		List<motoUsuario> usuarios = motoUsuarioRepo.findByNome("Vitor");
 		assertFalse(usuarios.isEmpty());
 	}
 

@@ -14,12 +14,12 @@ import fatec.moto.MotoContas.repository.motoAutorizacaoRepository;
 @Service
 public class motoAutorizacaoService {
   @Autowired
-  private motoAutorizacaoRepository autRepo;
+  private static motoAutorizacaoRepository autRepo;
   // @Autowired
-  private motoAutorizacao aut;
+  private static motoAutorizacao aut;
   
   @Transactional
-  public void cadastrarAutorizacao (String autorizacao){
+  public static void cadastrarAutorizacao (String autorizacao){
 		aut.setNome(autorizacao);
 		autRepo.save(aut);	
   }
